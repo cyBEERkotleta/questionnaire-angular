@@ -1,0 +1,21 @@
+<div
+  class="large-window"
+>
+  <div class="row">
+    <div class="col-auto">
+      <button *ngIf="buttonBackRoute"
+              type="submit"
+              class="button-back-arrow"
+              (click)="navigateBack()"
+      >🠔</button>
+    </div>
+    <div class="col">
+      <h1 class="text-center fs-5">{{title | titlecase}}</h1>
+    </div>
+    <div class="col-auto">
+      <app-button-add-new></app-button-add-new>
+    </div>
+  </div>
+  <app-dark-h-line></app-dark-h-line>
+  <ng-content></ng-content>
+</div>

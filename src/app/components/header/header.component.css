@@ -1,0 +1,5 @@
+.header-text {
+  @apply bg-blue-500 text-center text-5xl text-white font-bold font-sans;
+  padding: 10px;
+  margin: 0px;
+}

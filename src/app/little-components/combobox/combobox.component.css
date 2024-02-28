@@ -1,0 +1,10 @@
+.triangle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border-width: 0.3em;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
+  pointer-events: none;
+}

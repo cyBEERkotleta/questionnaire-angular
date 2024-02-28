@@ -1,0 +1,12 @@
+<div *ngIf="!loading">
+  <div *ngFor="let answeredForm of answeredForms">
+    <div class="border-2 border-gray-300 rounded-xl mt-1 mb-1">
+      <app-answered-form-item
+        [answeredForm]="answeredForm"
+      ></app-answered-form-item>
+    </div>
+    <p class="text-xl text-black text-center my-0">
+      * * *
+    </p>
+  </div>
+</div>

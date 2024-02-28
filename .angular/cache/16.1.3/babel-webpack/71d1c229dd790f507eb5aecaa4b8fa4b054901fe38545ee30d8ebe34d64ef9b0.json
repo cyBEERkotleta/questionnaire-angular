@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class AnsweredForm {\n  constructor(id, answers, form) {\n    this.id = id;\n    this.answers = answers;\n    this.form = form;\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

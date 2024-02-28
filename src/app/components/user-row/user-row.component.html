@@ -1,0 +1,16 @@
+<a [routerLink]="['/user-profiles', user.id]" xmlns="http://www.w3.org/1999/html" class="text-decoration-none">
+  <div class="user-row-div">
+    <div *ngIf="isMale()">
+      <img class="user-profile-image" ngSrc="assets/images/user_male_icon.png" height="592" width="438">
+    </div>
+    <div *ngIf="isFemale()">
+      <img class="user-profile-image" ngSrc="assets/images/user_female_icon.png" height="592" width="438">
+    </div>
+
+    <div class="user-name-email-div">
+      <span class="text-black">{{getUserName()}} </span>
+      <span class="font-monospace text-blue-800 font-medium">({{getUserEmail()}})</span>
+    </div>
+  </div>
+  <br/>
+</a>

@@ -1,0 +1,21 @@
+<div class="pt-3 mr-4">
+  <app-field-name
+    [fieldName]="fieldName"
+    [required]="required"
+  ></app-field-name>
+
+  <div *ngIf="nextLine" class="block"
+  >
+    <input type="date" class="form-control" [formControl]="formElement">
+  </div>
+  <div *ngIf="!nextLine" class="inline-block ml-2"
+  >
+    <input type="date" class="form-control" [formControl]="formElement">
+  </div>
+
+  <app-field-validator
+    [formElement]="formElement"
+    [showError]="showError"
+  ></app-field-validator>
+
+</div>

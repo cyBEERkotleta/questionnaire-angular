@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Topic {\n  constructor(id, name, description) {\n    this.id = id;\n    this.name = name;\n    this.description = description;\n    this.shownName = name;\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

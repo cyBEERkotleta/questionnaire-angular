@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Form {\n  constructor(id, name, shown, user, topic) {\n    this.id = id;\n    this.name = name;\n    this.shown = shown;\n    this.user = user;\n    this.topic = topic;\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

@@ -1,0 +1,53 @@
+<div *ngIf="fieldTypeService.typesLoaded">
+  <app-text-field
+    *ngIf="isSingleLineText()"
+
+    [fieldName]="field.label"
+    [formElement]="formElement"
+    [showError]="false"
+  ></app-text-field>
+
+  <app-multi-line-text
+    *ngIf="isMultiLineText()"
+
+    [fieldName]="field.label"
+    [formElement]="formElement"
+    [showError]="false"
+  ></app-multi-line-text>
+
+  <app-choice-date-string
+    *ngIf="isDate()"
+
+    [fieldName]="field.label"
+    [required]="field.required"
+    [formElement]="formElement"
+    [showError]="false"
+  ></app-choice-date-string>
+
+  <app-combobox-options-string
+    *ngIf="isComboBox()"
+
+    [field]="field"
+    [required]="field.required"
+    [formElement]="formElement"
+    [showError]="false"
+  ></app-combobox-options-string>
+
+  <app-radio-options-string
+    *ngIf="isRadioButton()"
+
+    [field]="field"
+    [required]="field.required"
+    [formElement]="formElement"
+    [showError]="false"
+  ></app-radio-options-string>
+
+  <app-checkbox-options-string
+    *ngIf="isCheckBox()"
+
+    [field]="field"
+    [required]="field.required"
+    [formElement]="formElement"
+    [showError]="false"
+  ></app-checkbox-options-string>
+</div>

@@ -1,0 +1,49 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <app-error-paragraph
+    *ngIf="isGlobalErrorSet()"
+    [errorMessage]="globalError"
+  ></app-error-paragraph>
+
+  <app-text-field
+    fieldName="Имя"
+    [formElement]="form.controls.firstName"
+    [showError]="showAllErrors"
+    additionalNote="имя может состоять только из букв, пробелов и дефисов"
+  ></app-text-field>
+
+  <app-text-field
+    fieldName="Фамилия"
+    [formElement]="form.controls.lastName"
+    [showError]="showAllErrors"
+    additionalNote="фамилия может состоять только из букв, пробелов и дефисов"
+  ></app-text-field>
+
+  <app-text-field
+    fieldName="Номер телефона"
+    [formElement]="form.controls.phoneNumber"
+    [showError]="showAllErrors"
+    additionalNote="номер телефона задаётся без знака + и может состоять только из цифр"
+  ></app-text-field>
+
+  <app-choice-gender
+    fieldName="Пол"
+    [formElement]="form.controls.gender"
+    [showError]="showAllErrors"
+    (listenerToValueChangeReady)="onGenderChoiceReadyToGetValue()"
+  ></app-choice-gender>
+
+  <app-middle-control
+    [paddingTop]="4">
+    <button
+      type="submit"
+      class="button-red-rounded"
+    >Сохранить</button>
+
+    <button
+      type="button"
+      class="button-back"
+      (click)="doTransferProfilePage()"
+    >Назад</button>
+  </app-middle-control>
+
+</form>

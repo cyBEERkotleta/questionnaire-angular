@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <app-error-paragraph
+    *ngIf="isGlobalErrorSet()"
+    [errorMessage]="globalError"
+  ></app-error-paragraph>
+
+  <app-text-field
+    fieldName="Название"
+    [formElement]="form.controls.name"
+    [showError]="showAllErrors"
+  ></app-text-field>
+
+  <app-multi-line-text
+    fieldName="Описание"
+    [formElement]="form.controls.description"
+    [showError]="showAllErrors"
+  ></app-multi-line-text>
+
+  <br/>
+
+  <app-middle-control>
+    <button
+      type="submit"
+      class="button-red-rounded"
+    >Сохранить изменения</button>
+  </app-middle-control>
+</form>

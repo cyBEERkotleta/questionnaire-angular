@@ -1,0 +1,28 @@
+<div *ngIf="showErrorBlock()"
+     class="mt-1"
+>
+  <app-error-paragraph
+     *ngIf="errorWithRequired()"
+     errorMessage="Это обязательное поле"
+  ></app-error-paragraph>
+  <app-error-paragraph
+     *ngIf="errorWithMinLength()"
+     errorMessage="Слишком мало символов"
+  ></app-error-paragraph>
+  <app-error-paragraph
+     *ngIf="errorWithMaxLength()"
+     errorMessage="Слишком много символов"
+  ></app-error-paragraph>
+  <app-error-paragraph
+     *ngIf="errorWithPattern()"
+     errorMessage="Неправильный формат"
+  ></app-error-paragraph>
+  <app-error-paragraph
+     *ngIf="errorWithEmail()"
+     errorMessage="Некорректный формат Email"
+  ></app-error-paragraph>
+  <app-error-paragraph
+    *ngIf="!isNoteEmpty() && anyErrorExists()"
+    [errorMessage]="getNoteText()"
+  ></app-error-paragraph>
+</div>

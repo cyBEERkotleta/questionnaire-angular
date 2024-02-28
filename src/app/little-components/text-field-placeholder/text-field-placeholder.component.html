@@ -1,0 +1,14 @@
+<div class="pt-3">
+  <input
+    type="text"
+    class="border rounded-1 w-full py-2 px-3 mt-1"
+    placeholder="{{getPlaceholder()}}"
+    [formControl]="formElement"
+  >
+
+  <app-field-validator
+    [formElement]="formElement"
+    [showError]="showError"
+    [additionalNote]="additionalNote"
+  ></app-field-validator>
+</div>

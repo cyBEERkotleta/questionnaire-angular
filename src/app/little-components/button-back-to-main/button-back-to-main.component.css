@@ -1,0 +1,12 @@
+.button-back-to-main {
+  @apply py-1 px-10 mx-auto bg-red-600 text-white;
+  clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%, 5% 50%);
+}
+
+.button-back-to-main:hover {
+  @apply bg-red-400;
+}
+
+.button-back-to-main:active {
+  @apply bg-red-600;
+}

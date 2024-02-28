@@ -1,0 +1,14 @@
+<div class="main-body">
+  <app-header></app-header>
+  <app-error></app-error>
+
+  <app-narrow-area
+    *ngIf="form"
+    title="{{form.name}}"
+    [showLine]="true"
+  >
+    <app-questionnaire
+      [formId]="form.id"
+    ></app-questionnaire>
+  </app-narrow-area>
+</div>

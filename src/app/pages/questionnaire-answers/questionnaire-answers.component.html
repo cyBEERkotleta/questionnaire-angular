@@ -1,0 +1,14 @@
+<div class="main-body">
+  <app-header></app-header>
+  <app-error></app-error>
+
+  <app-large-area
+    title="Ответы"
+    [buttonBackRoute]="['/my-form-fields', formId]"
+  >
+    <app-manage-answers
+      *ngIf="formId"
+      [formId]="formId"
+    ></app-manage-answers>
+  </app-large-area>
+</div>

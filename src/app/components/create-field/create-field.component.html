@@ -1,0 +1,43 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <app-error-paragraph
+    *ngIf="isGlobalErrorSet()"
+    [errorMessage]="globalError"
+  ></app-error-paragraph>
+
+  <app-text-field
+    fieldName="Вопрос"
+    [formElement]="form.controls.label"
+    [showError]="showAllErrors"
+  ></app-text-field>
+
+  <app-combobox-field-type
+    fieldName="Тип"
+    [formElement]="form.controls.type"
+    [showError]="showAllErrors"
+    (newValueSelected)="onFieldTypeSelected($event)"
+  ></app-combobox-field-type>
+
+  <app-option-list
+    [visible]="shouldShowOptionList()"
+    [(fieldOptions)]="fieldOptions"
+  ></app-option-list>
+
+  <app-checkbox-single
+    fieldName="Обязательное поле"
+    [formElement]="form.controls.required"
+  ></app-checkbox-single>
+
+  <app-checkbox-single
+    fieldName="Активно"
+    [formElement]="form.controls.active"
+  ></app-checkbox-single>
+
+  <br/>
+
+  <app-middle-control>
+    <button
+      type="submit"
+      class="button-red-rounded"
+    >Создать поле</button>
+  </app-middle-control>
+</form>

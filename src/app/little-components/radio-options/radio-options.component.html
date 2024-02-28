@@ -1,0 +1,14 @@
+<div class="pt-3">
+  <app-radio-button-group
+    [label]="fieldName"
+    [required]="required"
+    [objects]="options"
+    [selected]="selectedOption"
+    (itemSelection)="onChange($event)"
+  ></app-radio-button-group>
+
+  <app-field-validator
+    [formElement]="formElement"
+    [showError]="showError"
+  ></app-field-validator>
+</div>

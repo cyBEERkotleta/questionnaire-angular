@@ -1,0 +1,14 @@
+<div class="main-body">
+  <app-header></app-header>
+  <app-error></app-error>
+
+  <app-large-area
+    title="Профиль пользователя"
+    [buttonBackRoute]="[getButtonBackRoute()]"
+  >
+    <app-user-profile
+      *ngIf="user"
+      [user]="user"
+    ></app-user-profile>
+  </app-large-area>
+</div>

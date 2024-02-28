@@ -1,0 +1,14 @@
+<div class="pt-3">
+  <app-combobox
+    [label]="fieldName"
+    [required]="required"
+    [objects]="options"
+    [selected]="selectedOption"
+    (itemSelection)="onChange($event)"
+  ></app-combobox>
+
+  <app-field-validator
+    [formElement]="formElement"
+    [showError]="showError"
+  ></app-field-validator>
+</div>

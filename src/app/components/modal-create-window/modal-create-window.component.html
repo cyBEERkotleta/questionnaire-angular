@@ -1,0 +1,11 @@
+<div class="modal-background"
+     (click)="modalService.close()"
+></div>
+
+<div
+  class="modal-window-kate"
+>
+  <h1 class="text-center mb-2 text-lg">{{title | titlecase}}</h1>
+  <app-light-h-line></app-light-h-line>
+  <ng-content></ng-content>
+</div>

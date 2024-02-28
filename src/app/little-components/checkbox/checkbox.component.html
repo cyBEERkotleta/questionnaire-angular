@@ -1,0 +1,8 @@
+<input
+  type="checkbox"
+  name="{{text}}"
+  [formControl]="form.controls.check"
+  [value]="false"
+  (change)="selectionChanged()"
+/>
+<span class="text-black fs-6 pl-2">{{text}}</span>

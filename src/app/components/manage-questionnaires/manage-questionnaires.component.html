@@ -1,0 +1,30 @@
+<div class="border-1 border-gray-600 rounded-xl">
+  <table class="table-white-gray"
+  >
+    <thead>
+    <tr>
+      <th class="w-7/12">Название</th>
+      <th class="w-3/12">Тема</th>
+      <th class="w-auto">Поля</th>
+      <th class="w-auto"></th>
+    </tr>
+    </thead>
+    <tbody *ngIf="forms && fieldCounts">
+    <tr *ngFor="let form of forms; let even = even; let i = index" [ngClass]="{'bg-gray-100': even, 'cursor-pointer': true}">
+      <td (click)="getRouterLinkForForm(i)">{{form.name}}</td>
+      <td (click)="getRouterLinkForForm(i)">{{form.topic.shownName}}</td>
+      <td (click)="getRouterLinkForForm(i)">{{fieldCounts[i]}}</td>
+      <td>
+        <div class="action-buttons">
+          <app-button-edit
+            [editable]="form"
+          ></app-button-edit>
+          <app-button-delete
+            [deletable]="form"
+          ></app-button-delete>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

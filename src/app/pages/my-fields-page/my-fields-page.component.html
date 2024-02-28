@@ -1,0 +1,30 @@
+<div class="main-body">
+  <app-header></app-header>
+  <app-error></app-error>
+
+  <app-large-area-with-open-modal-button
+    title="Поля"
+    [buttonBackRoute]="['/my-forms']"
+  >
+    <app-manage-fields
+      [formId]="formId"
+    ></app-manage-fields>
+  </app-large-area-with-open-modal-button>
+</div>
+
+<app-modal-create-window
+  *ngIf="modalCreateWindow.isVisible()"
+  title="Создать поле"
+>
+  <app-create-field
+    [formId]="formId"
+  ></app-create-field>
+</app-modal-create-window>
+
+<app-modal-edit-window
+  *ngIf="modalEditWindow.isVisible()"
+  title="Редактировать поле"
+>
+  <app-edit-field></app-edit-field>
+</app-modal-edit-window>
+

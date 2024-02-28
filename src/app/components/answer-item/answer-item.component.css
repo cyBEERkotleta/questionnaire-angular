@@ -1,0 +1,22 @@
+.answer-block {
+  @apply text-black inline-flex break-words
+  rounded-xl py-2 px-3 font-normal m-2 flex-col justify-center align-middle;
+  font-size: 15px;
+
+  max-width: 350px; /* Максимальная ширина div-а */
+  width: auto; /* Автоматическое расширение ширины при необходимости */
+  min-height: 100px; /* Автоматическая высота */
+  height: fit-content;
+
+  overflow-wrap: anywhere;
+}
+
+.answer-field-label {
+  text-align: center;
+  @apply text-gray-400 font-bold;
+}
+
+.answer-text {
+  text-align: center;
+  @apply text-gray-600;
+}

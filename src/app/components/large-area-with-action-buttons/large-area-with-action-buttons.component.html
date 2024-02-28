@@ -1,0 +1,28 @@
+<div
+  class="large-window"
+>
+  <div class="row">
+    <div class="col-auto">
+      <button *ngIf="buttonBackRoute"
+              type="submit"
+              class="button-back-arrow"
+              (click)="navigateBack()"
+      >🠔</button>
+    </div>
+    <div class="col">
+      <h1 class="text-center fs-5">{{title | titlecase}}</h1>
+    </div>
+    <div class="col-auto">
+      <div *ngIf="buttonsAvailable" class="inline-flex flex-row gap-x-2">
+        <app-button-edit
+          [editable]="itemToPerformActionsWith"
+        ></app-button-edit>
+        <app-button-delete
+          [deletable]="itemToPerformActionsWith"
+        ></app-button-delete>
+      </div>
+    </div>
+  </div>
+  <app-dark-h-line></app-dark-h-line>
+  <ng-content></ng-content>
+</div>

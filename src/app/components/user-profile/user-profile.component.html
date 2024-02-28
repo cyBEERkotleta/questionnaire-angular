@@ -1,0 +1,44 @@
+<app-middle-control>
+  <div class="profile-and-button">
+    <div class="profile-items">
+      <div *ngIf="isMale()">
+        <img class="user-profile-image" ngSrc="assets/images/user_male_icon.png" height="592" width="438">
+      </div>
+      <div *ngIf="isFemale()">
+        <img class="user-profile-image" ngSrc="assets/images/user_female_icon.png" height="592" width="438">
+      </div>
+
+      <div class="flex flex-column justify-content-start">
+        <p class="m-1">
+          <span class="user-description-title">Имя: </span>
+          <span class="user-description-text">{{getUserName()}}</span>
+        </p>
+        <p class="m-1">
+          <span class="user-description-title">Пол: </span>
+          <span class="user-description-text">{{getUserGenderName()}}</span>
+        </p>
+        <p class="m-1">
+          <span class="user-description-title">Email: </span>
+          <span class="user-description-text">{{getUserEmail()}}</span>
+        </p>
+        <p class="m-1">
+          <span class="user-description-title">Номер телефона: </span>
+          <span class="user-description-text">+{{getUserPhone()}}</span>
+        </p>
+        <p class="m-1">
+          <span class="user-description-title">Форм создано: </span>
+          <span class="user-description-text">{{getFormCount()}}</span>
+        </p>
+      </div>
+    </div>
+
+    <app-middle-control
+      *ngIf="isProfileOwn()"
+    >
+      <button
+        class="button-dark"
+        routerLink="/edit-my-profile"
+      >Редактировать профиль</button>
+    </app-middle-control>
+  </div>
+</app-middle-control>

@@ -1,0 +1,47 @@
+<app-error-paragraph
+  *ngIf="isGlobalErrorSet()"
+  [errorMessage]="globalError"
+></app-error-paragraph>
+
+<app-middle-control>
+  <button
+    type="submit"
+    class="btn btn-light py-2 px-4"
+    (click)="navigateToAnswersPage()"
+  >Ответы пользователей</button>
+</app-middle-control>
+
+<div class="border-1 border-gray-600 rounded-xl mt-2">
+  <table class="table-white-gray"
+  >
+    <thead>
+    <tr>
+      <th class="w-6/12">Вопрос</th>
+      <th class="w-3/12">Тип</th>
+      <th class="w-auto">Нужно</th>
+      <th class="w-auto">Активно</th>
+      <th class="w-auto"></th>
+    </tr>
+    </thead>
+    <tbody *ngIf="fields">
+    <tr *ngFor="let field of fields; let even = even" [ngClass]="{'bg-gray-100': even}">
+      <td>{{field.label}}</td>
+      <td>{{field.type.name}}</td>
+      <td>{{field.required}}</td>
+      <td>{{field.active}}</td>
+      <td>
+        <div class="action-buttons">
+          <app-button-edit
+            [editable]="field"
+          ></app-button-edit>
+
+          <button class="button-in-table"
+                  type="submit"
+                  (click)="deleteField(field)"
+          ><span class="btn-icon">✖</span></button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

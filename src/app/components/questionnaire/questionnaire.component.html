@@ -1,0 +1,36 @@
+<form [formGroup]="formGroup" (ngSubmit)="submit()">
+  <app-error-paragraph
+    *ngIf="isGlobalErrorSet()"
+    [errorMessage]="globalError"
+  ></app-error-paragraph>
+
+  <app-middle-control *ngIf="savingProcess">
+    <span class="text-blue-500 fs-6 fw-bold">
+      Выполняется анализ и сохранение ответов...
+    </span>
+  </app-middle-control>
+
+  <div *ngFor="let formControl of formControls; let i = index"
+  >
+    <app-flexible-field-control
+      [field]="fields[i]"
+      [formElement]="formControl"
+      [showError]="showAllErrors"
+    ></app-flexible-field-control>
+  </div>
+
+  <br/>
+
+  <app-middle-control>
+    <button
+      type="submit"
+      class="button-red-rounded"
+    >Завершить</button>
+
+    <button
+      type="button"
+      class="button-dark"
+      (click)="clearAllFields()"
+    >Очистить всё</button>
+  </app-middle-control>
+</form>

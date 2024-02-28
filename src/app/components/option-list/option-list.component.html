@@ -1,0 +1,30 @@
+<div *ngIf="visible">
+  <br/>
+  <p class="mt-0 mb-0">
+    <app-field-name
+      fieldName="Варианты ответа"
+      [required]="true"
+    ></app-field-name>
+  </p>
+
+  <div class="options-container">
+    <form [formGroup]="fieldOptionsForm">
+      <div formArrayName="options">
+        <div *ngFor="let child of fieldOptionsForm.get('options')['controls']; let i = index"
+             formGroupName="{{i}}"
+        >
+          <div class="row mt-1">
+            <div class="col">
+              <input type="text" (change)="updateTextInFieldOptions()" formControlName="text"
+                     class="form-control" placeholder="Вариант {{i + 1}}">
+            </div>
+            <div class="col-auto">
+              <button type="button" class="btn btn-danger text-white text-xl fw-bolder" (click)="removeFieldOption(i)">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <button type="button" class="btn btn-dark mt-2 text-white text-xl fw-semibold" (click)="addFieldOption()">Добавить</button>
+</div>

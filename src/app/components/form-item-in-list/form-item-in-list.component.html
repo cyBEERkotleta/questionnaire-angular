@@ -1,0 +1,8 @@
+<a *ngIf="form.shown"
+  class="form-block"
+   [ngStyle]="getProperties()"
+   [routerLink]="['/questionnaires', form.id]"
+>
+  <span class="text-center">{{getFormName()}}</span>
+  <span class="text-center">{{getFormQuestionsDescription()}}</span>
+</a>

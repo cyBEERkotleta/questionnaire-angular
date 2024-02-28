@@ -1,0 +1,20 @@
+<div class="pt-3">
+  <fieldset class="border-1 border-gray-500 rounded block">
+    <legend>
+      <app-field-name
+        [fieldName]="fieldName"
+        [required]="required"
+      ></app-field-name>
+    </legend>
+
+    <div class="flex items-center flex-row gap-x-1"
+         *ngFor="let item of optionNames"
+    >
+      <app-checkbox
+        [text]="item"
+        (itemSelection)="onChange($event)"
+      ></app-checkbox>
+      <br/>
+    </div>
+  </fieldset>
+</div>

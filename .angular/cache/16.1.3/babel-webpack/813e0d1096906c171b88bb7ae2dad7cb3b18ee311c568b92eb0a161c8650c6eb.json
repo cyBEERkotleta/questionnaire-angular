@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class WordForm {\n  constructor(one, two, many) {\n    this.one = one;\n    this.two = two;\n    this.many = many;\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

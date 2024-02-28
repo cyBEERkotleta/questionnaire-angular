@@ -1,0 +1,16 @@
+<div class="pt-3">
+  <app-combobox
+    *ngIf="typesLoaded"
+
+    [label]="fieldName"
+    [required]="isFieldRequired()"
+    [objects]="fieldTypes"
+    [selected]="selectedType"
+    (itemSelection)="onChange($event)"
+  ></app-combobox>
+
+  <app-field-validator
+    [formElement]="formElement"
+    [showError]="showError"
+  ></app-field-validator>
+</div>

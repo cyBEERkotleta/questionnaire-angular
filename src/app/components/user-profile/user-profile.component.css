@@ -1,0 +1,26 @@
+.profile-items {
+  @apply py-2 px-4 inline-flex items-center flex-row gap-x-16 justify-start;
+}
+
+.user-profile-image {
+  @apply mb-2 border-8 border-double border-blue-300 rounded-full;
+  width: 200px;
+}
+
+.user-description-title {
+  @apply text-gray-400 text-lg  font-bold;
+}
+
+.user-description-text {
+  @apply text-gray-600 text-lg;
+}
+
+.profile-and-button {
+  @apply flex items-center flex-col gap-y-10 justify-start
+}
+
+@media (max-width: 800px) {
+  .profile-items {
+    @apply py-2 px-2 flex items-center flex-col gap-y-4 justify-start;
+  }
+}

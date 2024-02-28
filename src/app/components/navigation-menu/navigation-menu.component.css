@@ -1,0 +1,118 @@
+.menu-item {
+  @apply text-gray-400 text-xl font-light /*border-2 border-fuchsia-200*/;
+  text-decoration: none;
+  padding-left: 45px;
+}
+
+.menu-item:hover {
+  @apply text-gray-700;
+}
+
+.navigation_menu {
+  @apply top-0 right-0 left-0 flex py-2 px-5 justify-around items-center bg-white border-b-2;
+}
+
+.menu-items-div {
+  @apply flex items-center /*border-2 border-blue-400*/;
+  justify-content: space-around;
+}
+
+.menu-items-in-row {
+  @apply flex items-center /*border-2 border-amber-500*/;
+  justify-content: space-around;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  /*@apply border-2 border-emerald-500;*/
+}
+
+.dropbtn {
+  @apply text-gray-400 text-xl font-light;
+  text-decoration: none;
+  padding-left: 45px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
+@media (max-width: 1050px) and (min-width: 941px) {
+  .menu-item {
+    padding-left: 25px;
+  }
+}
+
+@media (max-width: 940px) and (min-width: 701px) {
+  .navigation_menu {
+    @apply top-0 flex-col right-0 left-0 flex py-2 px-5 justify-around items-center bg-white border-b-2;
+  }
+
+  .dropbtn {
+    padding-left: 0px;
+  }
+
+  .menu-item {
+    padding-left: 30px;
+  }
+
+  .menu-items-div {
+    @apply flex items-center justify-between w-full /*border-2 border-blue-400*/;
+    justify-content: space-around;
+  }
+
+  .menu-items-in-row {
+    @apply flex items-center justify-between /*border-2 border-amber-500*/;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 700px) {
+  .navigation_menu {
+    @apply top-0 flex-col right-0 left-0 flex py-2 px-5 justify-around items-center bg-white border-b-2;
+  }
+
+  .dropbtn {
+    padding-left: 0px;
+    padding-top: 13px;
+  }
+
+  .menu-item {
+    padding-left: 0px;
+  }
+
+  .menu-items-div {
+    @apply flex flex-col items-center justify-between w-full /*border-2 border-blue-400*/;
+    justify-content: space-around;
+  }
+
+  .menu-items-in-row {
+    @apply flex items-center justify-between w-full /*border-2 border-amber-500*/;
+    justify-content: space-around;
+  }
+}
+

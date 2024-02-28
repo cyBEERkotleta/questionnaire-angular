@@ -1,0 +1,10 @@
+.scroll-container {
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.scroll-content {
+  white-space: pre-line;
+}

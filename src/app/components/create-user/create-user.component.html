@@ -1,0 +1,71 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <app-error-paragraph
+    *ngIf="isGlobalErrorSet()"
+    [errorMessage]="globalError"
+  ></app-error-paragraph>
+
+  <app-middle-control *ngIf="sendingMailProcess">
+    <span class="text-blue-500 fs-6 fw-bold">
+      Выполняется отправка письма на ваш Email...
+    </span>
+  </app-middle-control>
+
+  <app-text-field-placeholder
+    placeholder="Email"
+    [formElement]="form.controls.email"
+    [showError]="showAllErrors"
+  ></app-text-field-placeholder>
+
+  <app-text-field-password-placeholder
+    placeholder="Пароль"
+    [formElement]="form.controls.password"
+    [showError]="showAllErrors"
+  ></app-text-field-password-placeholder>
+
+  <app-text-field-password-placeholder
+    placeholder="Подтверждение пароля"
+    [formElement]="form.controls.confirmPassword"
+    [showError]="showAllErrors"
+  ></app-text-field-password-placeholder>
+
+  <app-text-field-placeholder
+    placeholder="Имя"
+    [formElement]="form.controls.firstName"
+    [showError]="showAllErrors"
+    additionalNote="имя может состоять только из букв, пробелов и дефисов"
+  ></app-text-field-placeholder>
+
+  <app-text-field-placeholder
+    placeholder="Фамилия"
+    [formElement]="form.controls.lastName"
+    [showError]="showAllErrors"
+    additionalNote="фамилия может состоять только из букв, пробелов и дефисов"
+  ></app-text-field-placeholder>
+
+  <app-text-field-placeholder
+    placeholder="Номер телефона"
+    [formElement]="form.controls.phoneNumber"
+    [showError]="showAllErrors"
+    additionalNote="номер телефона задаётся без знака + и может состоять только из цифр"
+  ></app-text-field-placeholder>
+
+  <app-choice-gender
+    fieldName="Пол"
+    [formElement]="form.controls.gender"
+    [showError]="showAllErrors"
+  ></app-choice-gender>
+
+  <app-middle-control
+    [paddingTop]="2">
+    <button
+      type="submit"
+      class="button-red-rounded"
+    >Зарегистрироваться</button>
+  </app-middle-control>
+
+  <p class="text-center fs-6 pt-3">
+    <span class="text-black">Уже есть аккаунт? </span>
+    <a routerLink="/login" class="blue-bold-link-text">Войти</a>
+  </p>
+
+</form>

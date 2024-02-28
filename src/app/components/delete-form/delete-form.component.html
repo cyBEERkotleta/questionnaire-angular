@@ -1,0 +1,16 @@
+<app-error-paragraph
+  *ngIf="isGlobalErrorSet()"
+  [errorMessage]="globalError"
+></app-error-paragraph>
+
+<app-plain-paragraph>
+  Вы действительно хотите удалить форму "{{deletedForm.name}}"?
+</app-plain-paragraph>
+
+<app-middle-control>
+  <button
+    type="submit"
+    class="button-angry-delete"
+    (click)="submit()"
+  >Да, я хочу это удалить</button>
+</app-middle-control>

@@ -1,0 +1,32 @@
+<div class="main-body">
+  <app-header></app-header>
+  <app-error></app-error>
+
+  <app-narrow-area
+    title="Завершение регистрации"
+  >
+    <app-error-paragraph
+      *ngIf="isGlobalErrorSet()"
+      [errorMessage]="globalError"
+    ></app-error-paragraph>
+
+    <app-plain-paragraph *ngIf="!successfulReg && !isGlobalErrorSet()">
+      Идёт завершение регистрации...
+    </app-plain-paragraph>
+
+    <app-plain-paragraph *ngIf="successfulReg">
+      Поздравляем, ваш аккаунт успешно зарегистрирован!
+      Войдите в свой новый аккаунт.
+    </app-plain-paragraph>
+
+    <app-middle-control
+      *ngIf="successfulReg"
+      [paddingTop]="2"
+    >
+      <button
+        class="button-red-very-rounded-narrow"
+        routerLink="/login"
+      >Войти в аккаунт</button>
+    </app-middle-control>
+  </app-narrow-area>
+</div>

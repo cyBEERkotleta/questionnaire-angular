@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Field {\n  constructor(id, label, type, required, active, options, form) {\n    this.id = id;\n    this.label = label;\n    this.type = type;\n    this.required = required;\n    this.active = active;\n    this.options = options;\n    this.form = form;\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

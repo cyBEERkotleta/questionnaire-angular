@@ -1,0 +1,15 @@
+<fieldset class="border-1 border-gray-500 rounded block">
+  <legend>
+    <app-field-name
+      [fieldName]="label"
+      [required]="required"
+    ></app-field-name>
+  </legend>
+
+  <select class="form-control"
+          [(ngModel)]="selected"
+          (change)="onSelectionChanged()"
+  >
+    <option *ngFor="let item of objects" [ngValue]="item">{{item.shownName}}</option>
+  </select>
+</fieldset>

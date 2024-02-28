@@ -1,0 +1,22 @@
+<div class="pt-3 mr-4">
+  <app-field-name
+    [fieldName]="fieldName"
+    [required]="isFieldRequired()"
+  ></app-field-name>
+
+  <div *ngIf="nextLine" class="block"
+  >
+    <textarea class="form-control" [formControl]="formElement"></textarea>
+  </div>
+  <div *ngIf="!nextLine" class="inline-block ml-2"
+  >
+    <textarea class="form-control" [formControl]="formElement"></textarea>
+  </div>
+
+  <app-field-validator
+    [formElement]="formElement"
+    [showError]="showError"
+    [additionalNote]="additionalNote"
+  ></app-field-validator>
+
+</div>

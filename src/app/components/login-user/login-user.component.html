@@ -1,0 +1,41 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <app-error-paragraph
+    *ngIf="isGlobalErrorSet()"
+    [errorMessage]="globalError"
+  ></app-error-paragraph>
+
+  <app-text-field-placeholder
+    placeholder="Email"
+    [formElement]="form.controls.email"
+    [showError]="showAllErrors"
+  ></app-text-field-placeholder>
+
+  <app-text-field-password-placeholder
+    placeholder="Пароль"
+    [formElement]="form.controls.password"
+    [showError]="showAllErrors"
+  ></app-text-field-password-placeholder>
+
+  <app-middle-control
+    [paddingTop]="2">
+    <app-checkbox-single
+      fieldName="Запомнить меня"
+      [formElement]="form.controls.rememberMe"
+    ></app-checkbox-single>
+    <a routerLink="/email-to-restore-password" class="blue-bold-link-text">Забыли пароль?</a>
+  </app-middle-control>
+
+  <app-middle-control
+    [paddingTop]="2">
+    <button
+      type="submit"
+      class="button-red-rounded"
+    >Войти</button>
+  </app-middle-control>
+
+  <p class="text-center fs-6 pt-3">
+    <span class="text-black">Нет аккаунта? </span>
+    <a routerLink="/register" class="blue-bold-link-text">Создать</a>
+  </p>
+
+</form>

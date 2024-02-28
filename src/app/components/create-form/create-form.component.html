@@ -1,0 +1,30 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <app-error-paragraph
+    *ngIf="isGlobalErrorSet()"
+    [errorMessage]="globalError"
+  ></app-error-paragraph>
+
+  <span class="fw-semibold text-gray-600 text-xl">
+    Тема: {{getTopicName()}}
+  </span>
+
+  <app-text-field
+    fieldName="Название"
+    [formElement]="form.controls.name"
+    [showError]="showAllErrors"
+  ></app-text-field>
+
+  <app-checkbox-single
+    fieldName="Отображать форму в каталоге"
+    [formElement]="form.controls.shown"
+  ></app-checkbox-single>
+
+  <br/>
+
+  <app-middle-control>
+    <button
+      type="submit"
+      class="button-red-rounded"
+    >Создать форму</button>
+  </app-middle-control>
+</form>

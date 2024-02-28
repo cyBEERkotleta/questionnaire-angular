@@ -1,0 +1,28 @@
+<nav class="navigation_menu"
+>
+  <h1>
+    <a routerLink="/" class="text-decoration-none">
+      <app-logotype-text></app-logotype-text>
+    </a>
+  </h1>
+
+  <div class="menu-items-div"
+  >
+    <div class="menu-items-in-row">
+      <a routerLink="/topics" class="menu-item">Каталог</a>
+      <a *ngIf="sessionService.isCurrentUserAuthorized()" routerLink="/my-forms" class="menu-item">Мои формы</a>
+      <a *ngIf="sessionService.isCurrentUserAdmin()" routerLink="/user-list" class="menu-item">Пользователи</a>
+    </div>
+
+    <div *ngIf="sessionService.isCurrentUserAuthorized()"
+         class="dropdown"
+    >
+      <button class="dropbtn">{{getUserName()}} ▼</button>
+      <div class="dropdown-content">
+        <a *ngIf="user" [routerLink]="['/user-profiles', user.id]">Мой профиль</a>
+        <a routerLink="/change-password">Сменить пароль</a>
+        <a href="" (click)="logOut()">Выйти</a>
+      </div>
+    </div>
+  </div>
+</nav>

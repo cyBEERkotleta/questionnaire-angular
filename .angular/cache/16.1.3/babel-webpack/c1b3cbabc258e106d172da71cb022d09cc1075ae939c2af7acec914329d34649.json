@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Answer {\n  constructor(id, text, field) {\n    this.id = id;\n    this.text = text;\n    this.field = field;\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

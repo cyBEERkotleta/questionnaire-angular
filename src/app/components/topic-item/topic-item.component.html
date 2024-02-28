@@ -1,0 +1,19 @@
+<div class="py-2 px-4 flex items-center flex-column gap-x-4">
+  <h2 class="text-black fs-5 text-center">
+    {{topic.name}}
+  </h2>
+  <p class="text-sm text-gray-500 text-center max-w-screen-md">
+    {{topic.description}}
+  </p>
+
+  <button class="button-red-very-rounded-narrow"
+    (click)="doTransferToFormsOfTopicPage()"
+  >
+    Открыть
+  </button>
+
+  <br/>
+  <span class="font-normal text-black text-center">
+    * * *
+  </span>
+</div>

@@ -1,0 +1,21 @@
+<fieldset class="border-1 border-gray-500 rounded block">
+  <legend>
+    <app-field-name
+      [fieldName]="label"
+      [required]="required"
+    ></app-field-name>
+  </legend>
+
+  <div class="flex items-center flex-row gap-x-1"
+    *ngFor="let item of objects"
+  >
+    <input
+      type="radio"
+      name="{{label}}"
+      value="{{item}}"
+      (click)="selectionChanged(item)"
+      [checked]="isChecked(item)"
+    /><span class="text-black fs-6">{{item.shownName}}</span>
+    <br/>
+  </div>
+</fieldset>

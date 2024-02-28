@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class FieldOption {\n  constructor(id, text) {\n    this.id = id;\n    this.text = text;\n    this.shownName = text;\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
