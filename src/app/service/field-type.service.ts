@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {ErrorService} from "./error.service";
 import {catchError, map, Observable, throwError} from "rxjs";
 import {FieldType} from "../entity/FieldType";
+import {environment} from "../environment";
 
 @Injectable({
   providedIn: 'root'
@@ -62,7 +63,7 @@ export class FieldTypeService {
   }
 
   getAll() : Observable<FieldType[]> {
-    return this.http.get<FieldType[]>('http://localhost:8090/field_types')
+    return this.http.get<FieldType[]>(environment.apiUrl + '/field_types')
       .pipe(
         catchError(this.errorHandler.bind(this)),
         map(fieldTypes => {

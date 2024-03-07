@@ -7,6 +7,7 @@ import {RequestResult} from "../additional/RequestResult";
 import {SessionService} from "./session.service";
 import {UserRole} from "../entity/UserRole";
 import {Form} from "../entity/Form";
+import {environment} from "../environment";
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class TopicService {
   }
 
   getAll() : Observable<Topic[]> {
-    return this.http.get<Topic[]>('http://localhost:8090/topics')
+    return this.http.get<Topic[]>(environment.apiUrl + '/topics')
       .pipe(
         catchError(this.errorHandler.bind(this)),
         map(topics => {
@@ -42,7 +43,7 @@ export class TopicService {
   }
 
   getTopicById(id: bigint): Observable<Topic> {
-    let path = 'http://localhost:8090/topics/' + id;
+    let path = environment.apiUrl + '/topics/' + id;
     return this.http.get<Topic>(path)
       .pipe(
         catchError(this.errorHandler.bind(this)),
@@ -56,7 +57,7 @@ export class TopicService {
   saveTopic(topic: Topic): Observable<RequestResult> {
     let token = this.sessionService.getToken();
     let tokenWithTopic = {token: token, topic: topic};
-    return this.http.post<RequestResult>('http://localhost:8090/save_topic', tokenWithTopic)
+    return this.http.post<RequestResult>(environment.apiUrl + '/save_topic', tokenWithTopic)
       .pipe(
         catchError(this.errorHandler.bind(this))
       );
@@ -65,7 +66,7 @@ export class TopicService {
   deleteTopic(topic: Topic): Observable<RequestResult> {
     let token = this.sessionService.getToken();
     let tokenWithTopic = {token: token, topic: topic};
-    return this.http.post<RequestResult>('http://localhost:8090/delete_topic', tokenWithTopic)
+    return this.http.post<RequestResult>(environment.apiUrl + '/delete_topic', tokenWithTopic)
       .pipe(
         catchError(this.errorHandler.bind(this))
       );

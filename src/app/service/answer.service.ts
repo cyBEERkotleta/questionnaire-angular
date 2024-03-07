@@ -5,6 +5,7 @@ import {SessionService} from "./session.service";
 import {catchError, Observable, throwError} from "rxjs";
 import {RequestResult} from "../additional/RequestResult";
 import {Answer} from "../entity/Answer";
+import { environment } from '../environment';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class AnswerService {
 
   getAnswerById(id: bigint): Observable<Answer> {
     let token = this.sessionService.getToken();
-    let path = 'http://localhost:8090/answers/' + id;
+    let path = environment.apiUrl + '/answers/' + id;
     return this.http.post<Answer>(path, token)
       .pipe(
         catchError(this.errorHandler.bind(this)),
@@ -37,7 +38,7 @@ export class AnswerService {
 
   getAnswersByAnsweredFormId(answeredFormId: bigint) : Observable<Answer[]> {
     let token = this.sessionService.getToken();
-    let path = 'http://localhost:8090/fields/answered_form_' + answeredFormId;
+    let path = environment.apiUrl + '/fields/answered_form_' + answeredFormId;
     return this.http.post<Answer[]>(path, token)
       .pipe(
         catchError(this.errorHandler.bind(this)),
@@ -46,7 +47,7 @@ export class AnswerService {
 
   getAnswersByFieldId(fieldId: bigint) : Observable<Answer[]> {
     let token = this.sessionService.getToken();
-    let path = 'http://localhost:8090/fields/field_' + fieldId;
+    let path = environment.apiUrl + '/fields/field_' + fieldId;
     return this.http.post<Answer[]>(path, token)
       .pipe(
         catchError(this.errorHandler.bind(this)),
@@ -54,7 +55,7 @@ export class AnswerService {
   }
 
   saveAnswer(answer: Answer): Observable<RequestResult> {
-    return this.http.post<RequestResult>('http://localhost:8090/save_answer', answer)
+    return this.http.post<RequestResult>(environment.apiUrl + '/save_answer', answer)
       .pipe(
         catchError(this.errorHandler.bind(this)),
       );

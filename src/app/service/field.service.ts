@@ -5,6 +5,7 @@ import {SessionService} from "./session.service";
 import {catchError, map, Observable, throwError} from "rxjs";
 import {RequestResult} from "../additional/RequestResult";
 import {Field} from "../entity/Field";
+import {environment} from "../environment";
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class FieldService {
 
   getFieldById(id: bigint): Observable<Field> {
     let token = this.sessionService.getToken();
-    let path = 'http://localhost:8090/fields/' + id;
+    let path = environment.apiUrl + '/fields/' + id;
     return this.http.post<Field>(path, token)
       .pipe(
         catchError(this.errorHandler.bind(this)),
@@ -46,7 +47,7 @@ export class FieldService {
 
   getFieldsByFormId(formId: bigint) : Observable<Field[]> {
     let token = this.sessionService.getToken();
-    let path = 'http://localhost:8090/fields/form_' + formId;
+    let path = environment.apiUrl + '/fields/form_' + formId;
     return this.http.post<Field[]>(path, token)
       .pipe(
         catchError(this.errorHandler.bind(this)),
@@ -65,7 +66,7 @@ export class FieldService {
 
   getActiveFieldsByFormId(formId: bigint) : Observable<Field[]> {
     let token = this.sessionService.getToken();
-    let path = 'http://localhost:8090/fields_active/form_' + formId;
+    let path = environment.apiUrl + '/fields_active/form_' + formId;
     return this.http.post<Field[]>(path, token)
       .pipe(
         catchError(this.errorHandler.bind(this)),
@@ -83,7 +84,7 @@ export class FieldService {
   }
 
   getFieldCountsOfUserForms(userId: bigint): Observable<number[]> {
-    let path = 'http://localhost:8090/field_counts/user_' + userId;
+    let path = environment.apiUrl + '/field_counts/user_' + userId;
     return this.http.get<number[]>(path)
       .pipe(
         catchError(this.errorHandler.bind(this))
@@ -91,7 +92,7 @@ export class FieldService {
   }
 
   getFieldCountsOfTopicForms(topicId: bigint): Observable<number[]> {
-    let path = 'http://localhost:8090/field_counts/topic_' + topicId;
+    let path = environment.apiUrl + '/field_counts/topic_' + topicId;
     return this.http.get<number[]>(path)
       .pipe(
         catchError(this.errorHandler.bind(this))
@@ -101,7 +102,7 @@ export class FieldService {
   saveField(field: Field): Observable<RequestResult> {
     let token = this.sessionService.getToken();
     let tokenWithField = {token: token, field: field};
-    return this.http.post<RequestResult>('http://localhost:8090/save_field', tokenWithField)
+    return this.http.post<RequestResult>(environment.apiUrl + '/save_field', tokenWithField)
       .pipe(
         catchError(this.errorHandler.bind(this))
       );
@@ -110,7 +111,7 @@ export class FieldService {
   deleteField(field: Field): Observable<RequestResult> {
     let token = this.sessionService.getToken();
     let tokenWithField = {token: token, field: field};
-    return this.http.post<RequestResult>('http://localhost:8090/delete_field', tokenWithField)
+    return this.http.post<RequestResult>(environment.apiUrl + '/delete_field', tokenWithField)
       .pipe(
         catchError(this.errorHandler.bind(this))
       );

@@ -5,7 +5,7 @@ import {SessionService} from "./session.service";
 import {catchError, Observable, throwError} from "rxjs";
 import {RequestResult} from "../additional/RequestResult";
 import {AnsweredForm} from "../entity/AnsweredForm";
-import {Answer} from "../entity/Answer";
+import {environment} from "../environment";
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class AnsweredFormService {
 
   getAnsweredFormById(id: bigint): Observable<AnsweredForm> {
     let token = this.sessionService.getToken();
-    let path = 'http://localhost:8090/answered_forms/' + id;
+    let path = environment.apiUrl + '/answered_forms/' + id;
     return this.http.post<AnsweredForm>(path, token)
       .pipe(
         catchError(this.errorHandler.bind(this)),
@@ -38,7 +38,7 @@ export class AnsweredFormService {
 
   getAnsweredFormsByFormId(formId: bigint) : Observable<AnsweredForm[]> {
     let token = this.sessionService.getToken();
-    let path = 'http://localhost:8090/answered_forms/form_' + formId;
+    let path = environment.apiUrl + '/answered_forms/form_' + formId;
     return this.http.post<AnsweredForm[]>(path, token)
       .pipe(
         catchError(this.errorHandler.bind(this)),
@@ -46,7 +46,7 @@ export class AnsweredFormService {
   }
 
   saveAnsweredForm(answeredForm: AnsweredForm): Observable<RequestResult> {
-    return this.http.post<RequestResult>('http://localhost:8090/save_answered_form', answeredForm)
+    return this.http.post<RequestResult>(environment.apiUrl + '/save_answered_form', answeredForm)
       .pipe(
         catchError(this.errorHandler.bind(this)),
       );

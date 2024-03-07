@@ -6,6 +6,7 @@ import {ErrorService} from "./error.service";
 import {AuthorizeResult} from "../additional/AuthorizeResult";
 import {SessionService} from "./session.service";
 import {MailService} from "./mail.service";
+import {environment} from "../environment";
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,7 @@ export class UserService {
 
   getAll() : Observable<User[]> {
     let token = this.sessionService.getToken();
-    return this.http.post<User[]>('http://localhost:8090/users', token)
+    return this.http.post<User[]>(environment.apiUrl + '/users', token)
       .pipe(
         catchError(this.errorHandler.bind(this)),
       )
@@ -41,7 +42,7 @@ export class UserService {
 
   getUserById(id: bigint) : Observable<User> {
     let token = this.sessionService.getToken();
-    let path = 'http://localhost:8090/users/' + id;
+    let path = environment.apiUrl + '/users/' + id;
     return this.http.post<User>(path, token)
       .pipe(
         catchError(this.errorHandler.bind(this))
@@ -51,7 +52,7 @@ export class UserService {
   register(user: User, password: string): Observable<AuthorizeResult> {
     const userWithPassword = {user: user, password: password};
 
-    return this.http.post<AuthorizeResult>('http://localhost:8090/register', userWithPassword)
+    return this.http.post<AuthorizeResult>(environment.apiUrl + '/register', userWithPassword)
       .pipe(
         catchError(this.errorHandler.bind(this)),
         tap(result => {
@@ -67,7 +68,7 @@ export class UserService {
   tryRegister(user: User, password: string): Observable<AuthorizeResult> {
     const userWithPassword = {user: user, password: password};
 
-    return this.http.post<AuthorizeResult>('http://localhost:8090/try_register', userWithPassword)
+    return this.http.post<AuthorizeResult>(environment.apiUrl + '/try_register', userWithPassword)
       .pipe(
         catchError(this.errorHandler.bind(this))
       );
@@ -76,7 +77,7 @@ export class UserService {
   login(email: string, password: string, rememberMe: boolean): Observable<AuthorizeResult> {
     const loginData = {email: email, password: password};
 
-    return this.http.post<AuthorizeResult>('http://localhost:8090/login', loginData)
+    return this.http.post<AuthorizeResult>(environment.apiUrl + '/login', loginData)
       .pipe(
         catchError(this.errorHandler.bind(this)),
         tap(result => {
@@ -100,7 +101,7 @@ export class UserService {
       token: token, oldPassword: oldPassword, newPassword: newPassword
     };
 
-    return this.http.post<AuthorizeResult>('http://localhost:8090/change_password', tokenWithChangePasswordData)
+    return this.http.post<AuthorizeResult>(environment.apiUrl + '/change_password', tokenWithChangePasswordData)
       .pipe(
         catchError(this.errorHandler.bind(this)),
         tap(result => {
@@ -122,7 +123,7 @@ export class UserService {
       token: token, user: user
     };
 
-    return this.http.post<AuthorizeResult>('http://localhost:8090/save_user', tokenWithUser)
+    return this.http.post<AuthorizeResult>(environment.apiUrl + '/save_user', tokenWithUser)
       .pipe(
         catchError(this.errorHandler.bind(this)),
         tap(result => {
@@ -137,7 +138,7 @@ export class UserService {
 
   updateCurrentUser(): Observable<User> {
     let token = this.sessionService.getToken();
-    return this.http.post<User>('http://localhost:8090/user_by_token', token)
+    return this.http.post<User>(environment.apiUrl + '/user_by_token', token)
       .pipe(
         catchError(this.errorHandler.bind(this)),
         tap(result => {
@@ -148,7 +149,7 @@ export class UserService {
   }
 
   getUserByToken(token: string): Observable<User> {
-    return this.http.post<User>('http://localhost:8090/user_by_token', token)
+    return this.http.post<User>(environment.apiUrl + '/user_by_token', token)
       .pipe(
         catchError(this.errorHandler.bind(this))
       );
@@ -156,7 +157,7 @@ export class UserService {
 
   finishRegistration(user: User, hashedPassword: string): Observable<AuthorizeResult> {
     let userWithHashedPassword = {user: user, hashedPassword: hashedPassword};
-    return this.http.post<AuthorizeResult>('http://localhost:8090/finish_registration', userWithHashedPassword)
+    return this.http.post<AuthorizeResult>(environment.apiUrl + '/finish_registration', userWithHashedPassword)
       .pipe(
         catchError(this.errorHandler.bind(this))
       );
@@ -164,7 +165,7 @@ export class UserService {
 
   restorePassword(token: string, newPassword: string): Observable<AuthorizeResult> {
     let tokenWithNewPassword = {token: token, newPassword: newPassword};
-    return this.http.post<AuthorizeResult>('http://localhost:8090/restore_password', tokenWithNewPassword)
+    return this.http.post<AuthorizeResult>(environment.apiUrl + '/restore_password', tokenWithNewPassword)
       .pipe(
         catchError(this.errorHandler.bind(this)),
         tap(result => {

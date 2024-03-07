@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {catchError, Observable, tap, throwError} from "rxjs";
 import {ErrorService} from "./error.service";
 import {Gender} from "../entity/Gender";
+import {environment} from "../environment";
 
 @Injectable({
   providedIn: 'root'
@@ -21,14 +22,14 @@ export class GenderService {
   }
 
   getAll() : Observable<Gender[]> {
-    return this.http.get<Gender[]>('http://localhost:8090/genders')
+    return this.http.get<Gender[]>(environment.apiUrl + '/genders')
       .pipe(
         catchError(this.errorHandler.bind(this)),
       );
   }
 
   getGenderById(id: number): Observable<Gender> {
-    return this.http.get<Gender>('http://localhost:8090/genders/' + id)
+    return this.http.get<Gender>(environment.apiUrl + '/genders/' + id)
       .pipe(
         catchError(this.errorHandler.bind(this))
       );

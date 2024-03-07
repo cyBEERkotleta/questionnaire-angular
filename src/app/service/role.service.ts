@@ -3,6 +3,7 @@ import {UserRole} from "../entity/UserRole";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {catchError, Observable, throwError} from "rxjs";
 import {ErrorService} from "./error.service";
+import {environment} from "../environment";
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +48,7 @@ export class RoleService {
   }
 
   getRoleById(id: number) : Observable<UserRole> {
-    let path = 'http://localhost:8090/user_roles/' + id;
+    let path = environment.apiUrl + '/user_roles/' + id;
     return this.http.get<UserRole>(path)
       .pipe(
         catchError(this.errorHandler.bind(this)),

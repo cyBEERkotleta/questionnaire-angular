@@ -5,8 +5,7 @@ import {catchError, map, Observable, throwError} from "rxjs";
 import {RequestResult} from "../additional/RequestResult";
 import {Form} from "../entity/Form";
 import {SessionService} from "./session.service";
-import {Field} from "../entity/Field";
-import {Topic} from "../entity/Topic";
+import {environment} from "../environment";
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +28,7 @@ export class FormService {
   }
 
   getAll(): Observable<Form[]> {
-    return this.http.get<Form[]>('http://localhost:8090/forms')
+    return this.http.get<Form[]>(environment.apiUrl + '/forms')
       .pipe(
         catchError(this.errorHandler.bind(this)),
         map(forms => {
@@ -42,7 +41,7 @@ export class FormService {
   }
 
   getFormsByTopicId(topicId: bigint) : Observable<Form[]> {
-    let path = 'http://localhost:8090/forms/topic_' + topicId;
+    let path = environment.apiUrl + '/forms/topic_' + topicId;
     return this.http.get<Form[]>(path)
       .pipe(
         catchError(this.errorHandler.bind(this)),
@@ -57,7 +56,7 @@ export class FormService {
 
   getFormsByUserId(userId: bigint) : Observable<Form[]> {
     let token = this.sessionService.getToken();
-    let path = 'http://localhost:8090/forms/user_' + userId;
+    let path = environment.apiUrl + '/forms/user_' + userId;
     return this.http.post<Form[]>(path, token)
       .pipe(
         catchError(this.errorHandler.bind(this)),
@@ -72,7 +71,7 @@ export class FormService {
 
   getFormById(id: bigint): Observable<Form> {
     let token = this.sessionService.getToken();
-    let path = 'http://localhost:8090/forms/' + id;
+    let path = environment.apiUrl + '/forms/' + id;
     return this.http.post<Form>(path, token)
       .pipe(
         catchError(this.errorHandler.bind(this)),
@@ -86,7 +85,7 @@ export class FormService {
   saveForm(form: Form): Observable<RequestResult> {
     let token = this.sessionService.getToken();
     let tokenWithForm = {token: token, form: form};
-    return this.http.post<RequestResult>('http://localhost:8090/save_form', tokenWithForm)
+    return this.http.post<RequestResult>(environment.apiUrl + '/save_form', tokenWithForm)
       .pipe(
         catchError(this.errorHandler.bind(this))
       );
@@ -95,7 +94,7 @@ export class FormService {
   deleteForm(form: Form): Observable<RequestResult> {
     let token = this.sessionService.getToken();
     let tokenWithForm = {token: token, form: form};
-    return this.http.post<RequestResult>('http://localhost:8090/delete_form', tokenWithForm)
+    return this.http.post<RequestResult>(environment.apiUrl + '/delete_form', tokenWithForm)
       .pipe(
         catchError(this.errorHandler.bind(this))
       );
