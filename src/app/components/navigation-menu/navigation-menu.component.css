@@ -25,13 +25,13 @@
 .dropdown {
   position: relative;
   display: inline-block;
-  /*@apply border-2 border-emerald-500;*/
 }
 
 .dropbtn {
-  @apply text-gray-400 text-xl font-light;
+  @apply text-gray-400 font-light;
   text-decoration: none;
   padding-left: 45px;
+  font-size: 22px;
   border: none;
   cursor: pointer;
 }
@@ -67,6 +67,10 @@
     padding-left: 25px;
     font-size: 21px;
   }
+
+  .dropbtn {
+    font-size: 21px;
+  }
 }
 
 @media (max-width: 940px) and (min-width: 701px) {
@@ -76,6 +80,7 @@
 
   .dropbtn {
     padding-left: 0px;
+    font-size: 19px;
   }
 
   .menu-item {
@@ -102,6 +107,7 @@
   .dropbtn {
     padding-left: 0px;
     padding-top: 13px;
+    font-size: 17px;
   }
 
   .menu-item {
