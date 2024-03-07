@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "watch": "ng build --watch --configuration development",
-    "heroku-postbuild": "npm install && ng build --prod"
+    "preinstall": "npm install",
+    "postinstall": "ng build --aot --target=production"
   },
   "engines": {
     "node": "18.16.1",
