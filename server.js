@@ -6,7 +6,7 @@ app.listen(process.env.PORT || 4200);
 
 const path = require('path');
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/index.html'));
+  res.sendFile(path.join(__dirname + '/dist/angular-questionnaire/index.html'));
 })
 
 console.log('Console listening!');
