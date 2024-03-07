@@ -20,9 +20,6 @@ export class LargeAreaComponent {
     this.urlService = urlService;
   }
 
-  /*navigateBack() {
-    this.router.navigate([this.urlService.getLastPage()]);
-  }*/
   navigateBack() {
     this.router.navigate(this.buttonBackRoute);
   }

@@ -1,7 +1,8 @@
 .menu-item {
-  @apply text-gray-400 text-xl font-light /*border-2 border-fuchsia-200*/;
+  @apply text-gray-400 font-light;
   text-decoration: none;
   padding-left: 45px;
+  font-size: 22px;
 }
 
 .menu-item:hover {
@@ -13,12 +14,12 @@
 }
 
 .menu-items-div {
-  @apply flex items-center /*border-2 border-blue-400*/;
+  @apply flex items-center;
   justify-content: space-around;
 }
 
 .menu-items-in-row {
-  @apply flex items-center /*border-2 border-amber-500*/;
+  @apply flex items-center;
   justify-content: space-around;
 }
 .dropdown {
@@ -64,6 +65,7 @@
 @media (max-width: 1050px) and (min-width: 941px) {
   .menu-item {
     padding-left: 25px;
+    font-size: 21px;
   }
 }
 
@@ -78,6 +80,7 @@
 
   .menu-item {
     padding-left: 30px;
+    font-size: 20px;
   }
 
   .menu-items-div {
@@ -103,6 +106,7 @@
 
   .menu-item {
     padding-left: 0px;
+    font-size: 19px;
   }
 
   .menu-items-div {
