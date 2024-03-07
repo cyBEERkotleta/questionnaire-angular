@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "watch": "ng build --watch --configuration development",
-    "postinstall": "ng build --aot --target=production"
+    "postinstall": "NODE_ENV=production ng build --aot"
   },
   "engines": {
     "node": "18.16.1",
